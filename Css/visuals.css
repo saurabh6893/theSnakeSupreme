@@ -2,7 +2,9 @@
   padding: 0;
   margin: 0;
 }
+@import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
 
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@1,700&display=swap');
 body {
   background: url(../Assets/1155032.jpg);
   min-height: 100vh;
@@ -112,8 +114,63 @@ body {
 
 .highScore {
   position: absolute;
-  left: 100px;
-  top: 100px;
-  font-size: 50px;
+  left: 80px;
+  top: 200px;
+  font-size: 30px;
   color: white;
+  width: 400px;
+  height: 200px;
+
+  border-radius: 25px;
+  padding: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  font-family: 'Ubuntu', sans-serif;
+  transition: 0.5s ease all;
+}
+
+.rolling span {
+  position: absolute;
+  left: 120px;
+  top: 140px;
+  width: 300px;
+  height: 300px;
+  border: 2px solid rgb(255, 255, 255);
+  pointer-events: none;
+  animation: animax 4s linear infinite;
+}
+
+.rolling span:nth-child(1) {
+  border-radius: 47% 53% 77% 23% / 50% 30% 70% 50%;
+  animation-direction: reverse;
+}
+.rolling span:nth-child(2) {
+  animation-duration: 3s;
+  border-radius: 60% 40% 43% 57% / 28% 30% 70% 72%;
+}
+.rolling span:nth-child(3) {
+  animation-duration: 7s;
+  animation-direction: reverse;
+  border-radius: 24% 76% 57% 43% / 28% 28% 72% 72%;
+}
+.rolling span:nth-child(4) {
+  border-radius: 47% 53% 77% 23% / 50% 30% 70% 50%;
+  animation-duration: 5s;
+}
+@keyframes animax {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(350deg);
+  }
+}
+
+.highScore.almost {
+  color: crimson;
+  font-family: 'Lobster', cursive;
+  font-size: 50px;
+  font-weight: bold;
 }

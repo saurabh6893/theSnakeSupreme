@@ -23,6 +23,7 @@ function main(ctime) {
     return
   }
   lastPaintTime = ctime
+
   gameEngine()
 }
 
@@ -59,7 +60,7 @@ function gameEngine() {
     score += 1
     if (score > hiscoreval) {
       hiscoreval = score
-      document.querySelector('.highScore').innerHTML = `hiScore: ` + hiscoreval
+      document.querySelector('.highScore').innerHTML = `hiScore ` + hiscoreval
       localStorage.setItem('hiscore', JSON.stringify(hiscoreval))
     }
 
@@ -79,6 +80,16 @@ function gameEngine() {
     food = {
       x: Math.round(a + (b - a) * Math.random()),
       y: Math.round(a + (b - a) * Math.random()),
+    }
+    hsa()
+  }
+
+  // highScoreAlert
+  function hsa() {
+    if (score >= hiscore - 5 && score < hiscore) {
+      document.querySelector('.highScore').classList.add('almost')
+    } else {
+      document.querySelector('.highScore').classList.remove('almost')
     }
   }
 
@@ -117,7 +128,7 @@ if (hiscore === null) {
   localStorage.setItem('hiscore', JSON.stringify(hiscoreVal))
 } else {
   hiscoreval = JSON.parse(hiscore)
-  document.querySelector('.highScore').innerHTML = `hiScore: ` + hiscore
+  document.querySelector('.highScore').innerHTML = 'HighScore ' + hiscore
 }
 
 window.requestAnimationFrame(main)
