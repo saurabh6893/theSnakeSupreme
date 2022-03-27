@@ -74,7 +74,7 @@ body {
 .head {
   background-color: red;
   border: 2px solid black;
-  border-radius: 15px;
+  border-radius: 14px;
   transform: scale(1.1);
 }
 .snake {
@@ -92,15 +92,14 @@ body {
 }
 
 .food {
-  background-color: rgb(251, 28, 65);
+  background: rgb(21, 12, 148);
+  background: radial-gradient(
+    circle,
+    rgba(21, 12, 148, 1) 0%,
+    rgba(222, 17, 17, 1) 99%
+  );
   border: 2px solid black;
-  border-radius: 10px;
-}
-
-.food.ultra {
-  background-color: rgb(255, 35, 72);
-  border: 2px solid black;
-  border-radius: 15px;
+  border-radius: 20px;
 }
 
 .scorbox {
@@ -173,4 +172,18 @@ body {
   font-family: 'Lobster', cursive;
   font-size: 50px;
   font-weight: bold;
+}
+
+.token {
+  background-color: gold;
+  border: 2px solid black;
+  border-radius: 14px;
+  transform: scale(1.1);
+}
+
+.tokenX {
+  background-color: Silver;
+  border: 2px solid black;
+  border-radius: 14px;
+  transform: scale(1.1);
 }

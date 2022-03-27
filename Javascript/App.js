@@ -14,7 +14,8 @@ let snakeArray = [
 ]
 
 let food = { x: 7, y: 3 }
-
+let token = { x: 11, y: 5 }
+let tokenX = { x: 2, y: 10 }
 // Games Logical requirements //
 
 function main(ctime) {
@@ -53,6 +54,16 @@ function gameEngine() {
     alert('Game Over')
     snakeArray = [{ x: 13, y: 15 }]
     score = 0
+
+    // if (score > 3) {
+    //   setTimeout(() => {
+    //     tokenElement = document.createElement('div')
+    //     tokenElement.style.gridRowStart = token.y
+    //     tokenElement.style.gridColumnStart = token.x
+    //     tokenElement.classList.add('token')
+    //     board.appendChild(tokenElement)
+    //   }, 2000)
+    // }
   }
   // eating Algorithm
   if (snakeArray[0].y === food.y && snakeArray[0].x === food.x) {
@@ -77,16 +88,26 @@ function gameEngine() {
 
     let a = 1
     let b = 16
+
     food = {
       x: Math.round(a + (b - a) * Math.random()),
       y: Math.round(a + (b - a) * Math.random()),
     }
+    token = {
+      x: Math.round(a + (b - a) * Math.random()),
+      y: Math.round(a + (b - a) * Math.random()),
+    }
+    tokenX = {
+      x: Math.round(a + (b - a) * Math.random()),
+      y: Math.round(a + (b - a) * Math.random()),
+    }
+
     hsa()
   }
 
   // highScoreAlert
   function hsa() {
-    if (score >= hiscore - 5 && score < hiscore) {
+    if (score >= hiscore - 3 && score < hiscore) {
       document.querySelector('.highScore').classList.add('almost')
     } else {
       document.querySelector('.highScore').classList.remove('almost')
@@ -119,12 +140,42 @@ function gameEngine() {
   foodElement.style.gridColumnStart = food.x
   foodElement.classList.add('food')
   board.appendChild(foodElement)
+
+  if (score > 3 && score % 5 == 0) {
+    tokenElement = document.createElement('div')
+    tokenElement.style.gridRowStart = token.y
+    tokenElement.style.gridColumnStart = token.x
+    tokenElement.classList.add('token')
+    board.appendChild(tokenElement)
+    if (snakeArray[0].y === token.y && snakeArray[0].x === token.x) {
+      snakeArray.shift()
+      board.removeChild(tokenElement)
+      tokenElement.classList.remove('token')
+      score += 1
+    }
+  }
+
+  if (score > 10 && score % 10 == 0) {
+    tokenElementX = document.createElement('div')
+    tokenElementX.style.gridRowStart = tokenX.y
+    tokenElementX.style.gridColumnStart = tokenX.x
+    tokenElementX.classList.add('tokenX')
+    board.appendChild(tokenElementX)
+    if (snakeArray[0].y === tokenX.y && snakeArray[0].x === tokenX.x) {
+      board.removeChild(tokenElementX)
+      tokenElement.classList.remove('tokenX')
+      speed += 5
+      score += 1
+      setTimeout(() => {
+        speed -= 4
+      }, 5000)
+    }
+  }
 }
 
 let hiscore = localStorage.getItem('hiscore')
 if (hiscore === null) {
   hiscoreVal = 0
-
   localStorage.setItem('hiscore', JSON.stringify(hiscoreVal))
 } else {
   hiscoreval = JSON.parse(hiscore)
