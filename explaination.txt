@@ -1,6 +1,0 @@
-gameEngine Function 
- a board is created (Empty)
- using the snake array-every element in array is used to create a Div
- by adding gridRowStart & gridColumnStart its body is created for as many elements are available
-
- atlast the snakebody is appended to the Board
