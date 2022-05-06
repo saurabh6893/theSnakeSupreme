@@ -30,6 +30,10 @@ body {
   background-color: black;
   overflow: hidden;
   border-radius: 40px;
+  -webkit-border-radius: 40px;
+  -moz-border-radius: 40px;
+  -ms-border-radius: 40px;
+  -o-border-radius: 40px;
 }
 
 .gameboard::before {
@@ -186,4 +190,40 @@ body {
   border: 2px solid black;
   border-radius: 14px;
   transform: scale(1.1);
+}
+@media (max-width:1400px) {
+.rolling{
+  position: absolute;
+  left: 1%;
+  top: 1%;
+  
+}
+
+  .rolling span{
+  
+  width: 150px;
+  height: 150px;
+  left: 60px;
+  top: 70px;
+}
+
+.highScore{
+  position: relative;
+  left: 60px;
+  top: 70px;
+  width: 100px;
+  height: 100px;
+  font-size:13px;
+ 
+  transform: translate(10%, 20%);
+  -webkit-transform: translate(10%, 20%);
+  -moz-transform: translate(10%, 20%);
+  -ms-transform: translate(10%, 20%);
+  -o-transform: translate(10%, 20%);
+}
+
+.scorbox{
+  right: 200px;
+  font-size: 20px;  
+}
 }
